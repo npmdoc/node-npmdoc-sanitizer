@@ -1,0 +1,3224 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://github.com/theSmaw/Caja-HTML-Sanitizer">sanitizer (v0.1.3)</a>
+</h1>
+<h4>Caja's HTML Sanitizer as a Node.js module</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sanitizer">module sanitizer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.escape">
+            function <span class="apidocSignatureSpan">sanitizer.</span>escape
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.escapeAttrib">
+            function <span class="apidocSignatureSpan">sanitizer.</span>escapeAttrib
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.makeHtmlSanitizer">
+            function <span class="apidocSignatureSpan">sanitizer.</span>makeHtmlSanitizer
+            <span class="apidocSignatureSpan">(tagPolicy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.makeSaxParser">
+            function <span class="apidocSignatureSpan">sanitizer.</span>makeSaxParser
+            <span class="apidocSignatureSpan">(handler)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.makeTagPolicy">
+            function <span class="apidocSignatureSpan">sanitizer.</span>makeTagPolicy
+            <span class="apidocSignatureSpan">( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.normalizeRCData">
+            function <span class="apidocSignatureSpan">sanitizer.</span>normalizeRCData
+            <span class="apidocSignatureSpan">(rcdata)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.sanitize">
+            function <span class="apidocSignatureSpan">sanitizer.</span>sanitize
+            <span class="apidocSignatureSpan">(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.sanitizeAttribs">
+            function <span class="apidocSignatureSpan">sanitizer.</span>sanitizeAttribs
+            <span class="apidocSignatureSpan">(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.sanitizeWithPolicy">
+            function <span class="apidocSignatureSpan">sanitizer.</span>sanitizeWithPolicy
+            <span class="apidocSignatureSpan">(inputHtml, tagPolicy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.unescapeEntities">
+            function <span class="apidocSignatureSpan">sanitizer.</span>unescapeEntities
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri">
+            function <span class="apidocSignatureSpan">sanitizer.</span>uri
+            <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sanitizer.</span>Sanitizer</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sanitizer.</span>uri.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sanitizer.Sanitizer">module sanitizer.Sanitizer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.escape">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>escape
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.escapeAttrib">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>escapeAttrib
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.makeHtmlSanitizer">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeHtmlSanitizer
+            <span class="apidocSignatureSpan">(tagPolicy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.makeSaxParser">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeSaxParser
+            <span class="apidocSignatureSpan">(handler)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.makeTagPolicy">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeTagPolicy
+            <span class="apidocSignatureSpan">( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.normalizeRCData">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>normalizeRCData
+            <span class="apidocSignatureSpan">(rcdata)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.sanitize">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitize
+            <span class="apidocSignatureSpan">(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.sanitizeAttribs">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitizeAttribs
+            <span class="apidocSignatureSpan">(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.sanitizeWithPolicy">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitizeWithPolicy
+            <span class="apidocSignatureSpan">(inputHtml, tagPolicy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.Sanitizer.unescapeEntities">
+            function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>unescapeEntities
+            <span class="apidocSignatureSpan">(s)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sanitizer.</span>Sanitizer</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sanitizer.uri">module sanitizer.uri</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.uri">
+            function <span class="apidocSignatureSpan">sanitizer.</span>uri
+            <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.URI">
+            function <span class="apidocSignatureSpan">sanitizer.uri.</span>URI
+            <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.collapse_dots">
+            function <span class="apidocSignatureSpan">sanitizer.uri.</span>collapse_dots
+            <span class="apidocSignatureSpan">(path)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.create">
+            function <span class="apidocSignatureSpan">sanitizer.uri.</span>create
+            <span class="apidocSignatureSpan">(scheme, credentials, domain, port, path, query, fragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.parse">
+            function <span class="apidocSignatureSpan">sanitizer.uri.</span>parse
+            <span class="apidocSignatureSpan">(uriStr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.resolve">
+            function <span class="apidocSignatureSpan">sanitizer.uri.</span>resolve
+            <span class="apidocSignatureSpan">(baseUri, relativeUri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sanitizer.uri.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sanitizer.uri.prototype">module sanitizer.uri.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.checkParameterCache_">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>checkParameterCache_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.clone">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>clone
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getAllParameters">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getAllParameters
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getCredentials">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getCredentials
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getDomain">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getDomain
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getFragment">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getFragment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getParameterMap">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterMap
+            <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getParameterValue">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterValue
+            <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getParameterValues">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterValues
+            <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getPath">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getPath
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getPort">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getPort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getQuery">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getQuery
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawCredentials">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawCredentials
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawDomain">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawDomain
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawFragment">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawFragment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawPath">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawPath
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawQuery">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawQuery
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getRawScheme">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawScheme
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.getScheme">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getScheme
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasCredentials">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasCredentials
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasDomain">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasDomain
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasFragment">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasFragment
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasPath">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasPath
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasPort">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasPort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasQuery">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasQuery
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.hasScheme">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasScheme
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.removeParameter">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>removeParameter
+            <span class="apidocSignatureSpan">(key)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setAllParameters">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setAllParameters
+            <span class="apidocSignatureSpan">(params)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setCredentials">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setCredentials
+            <span class="apidocSignatureSpan">(newCredentials)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setDomain">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setDomain
+            <span class="apidocSignatureSpan">(newDomain)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setFragment">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setFragment
+            <span class="apidocSignatureSpan">(newFragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setParameterValues">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setParameterValues
+            <span class="apidocSignatureSpan">(key, values)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setPath">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setPath
+            <span class="apidocSignatureSpan">(newPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setPort">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setPort
+            <span class="apidocSignatureSpan">(newPort)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setQuery">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setQuery
+            <span class="apidocSignatureSpan">(newQuery)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawCredentials">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawCredentials
+            <span class="apidocSignatureSpan">(newCredentials)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawDomain">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawDomain
+            <span class="apidocSignatureSpan">(newDomain)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawFragment">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawFragment
+            <span class="apidocSignatureSpan">(newFragment)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawPath">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawPath
+            <span class="apidocSignatureSpan">(newPath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawQuery">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawQuery
+            <span class="apidocSignatureSpan">(newQuery)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setRawScheme">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawScheme
+            <span class="apidocSignatureSpan">(newScheme)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.setScheme">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setScheme
+            <span class="apidocSignatureSpan">(newScheme)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sanitizer.uri.prototype.toString">
+            function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sanitizer" id="apidoc.module.sanitizer">module sanitizer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.escape" id="apidoc.element.sanitizer.escape">
+        function <span class="apidocSignatureSpan">sanitizer.</span>escape
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrib(s) {
+	if(s) {
+	    return ('' + s).replace(ampRe, '&amp;amp;').replace(ltRe, '&amp;lt;')
+        .replace(gtRe, '&amp;gt;').replace(quotRe, '&amp;#34;');
+	}
+	else {
+	    return s;
+	}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Use
+
+See /test/test-sanitzer.js for full documentation.
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">escape</span>('your dirty string'); // Escapes HTML special characters in
+ attribute values as HTML entities
+```
+
+```
+var yourParser = sanitizer.makeSaxParser(yourHandler); // Given a SAX-like event handler, produce a function that feeds those events
+ and a parameter to the event handler.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.escapeAttrib" id="apidoc.element.sanitizer.escapeAttrib">
+        function <span class="apidocSignatureSpan">sanitizer.</span>escapeAttrib
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrib(s) {
+	if(s) {
+	    return ('' + s).replace(ampRe, '&amp;amp;').replace(ltRe, '&amp;lt;')
+        .replace(gtRe, '&amp;gt;').replace(quotRe, '&amp;#34;');
+	}
+	else {
+	    return s;
+	}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.makeHtmlSanitizer" id="apidoc.element.sanitizer.makeHtmlSanitizer">
+        function <span class="apidocSignatureSpan">sanitizer.</span>makeHtmlSanitizer
+        <span class="apidocSignatureSpan">(tagPolicy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeHtmlSanitizer(tagPolicy) {
+    var stack;
+    var ignoring;
+    var emit = function (text, out) {
+        if (!ignoring) { out.push(text); }
+    };
+    return makeSaxParser({
+        'startDoc': function(_) {
+            stack = [];
+            ignoring = false;
+        },
+        'startTag': function(tagNameOrig, attribs, out) {
+            if (ignoring) { return; }
+            if (!html4.ELEMENTS.hasOwnProperty(tagNameOrig)) { return; }
+            var eflagsOrig = html4.ELEMENTS[tagNameOrig];
+            if (eflagsOrig &amp; html4.eflags['FOLDABLE']) {
+                return;
+            }
+
+            var decision = tagPolicy(tagNameOrig, attribs);
+            if (!decision) {
+                ignoring = !(eflagsOrig &amp; html4.eflags['EMPTY']);
+                return;
+            } else if (typeof decision !== 'object') {
+                throw new Error('tagPolicy did not return object (old API?)');
+            }
+            if ('attribs' in decision) {
+                attribs = decision['attribs'];
+            } else {
+                throw new Error('tagPolicy gave no attribs');
+            }
+            var eflagsRep;
+            var tagNameRep;
+            if ('tagName' in decision) {
+                tagNameRep = decision['tagName'];
+                eflagsRep = html4.ELEMENTS[tagNameRep];
+            } else {
+                tagNameRep = tagNameOrig;
+                eflagsRep = eflagsOrig;
+            }
+            // TODO(mikesamuel): relying on tagPolicy not to insert unsafe
+            // attribute names.
+
+            // If this is an optional-end-tag element and either this element or its
+            // previous like sibling was rewritten, then insert a close tag to
+            // preserve structure.
+            if (eflagsOrig &amp; html4.eflags['OPTIONAL_ENDTAG']) {
+                var onStack = stack[stack.length - 1];
+                if (onStack &amp;&amp; onStack.orig === tagNameOrig &amp;&amp;
+                    (onStack.rep !== tagNameRep || tagNameOrig !== tagNameRep)) {
+                    out.push('&lt;\/', onStack.rep, '&gt;');
+                }
+            }
+
+            if (!(eflagsOrig &amp; html4.eflags['EMPTY'])) {
+                stack.push({orig: tagNameOrig, rep: tagNameRep});
+            }
+
+            out.push('&lt;', tagNameRep);
+            for (var i = 0, n = attribs.length; i &lt; n; i += 2) {
+                var attribName = attribs[i],
+                    value = attribs[i + 1];
+                if (value !== null &amp;&amp; value !== void 0) {
+                    out.push(' ', attribName, '="', escapeAttrib(value), '"');
+                }
+            }
+            out.push('&gt;');
+
+            if ((eflagsOrig &amp; html4.eflags['EMPTY'])
+                &amp;&amp; !(eflagsRep &amp; html4.eflags['EMPTY'])) {
+                // replacement is non-empty, synthesize end tag
+                out.push('&lt;\/', tagNameRep, '&gt;');
+            }
+        },
+        'endTag': function(tagName, out) {
+            if (ignoring) {
+                ignoring = false;
+                return;
+            }
+            if (!html4.ELEMENTS.hasOwnProperty(tagName)) { return; }
+            var eflags = html4.ELEMENTS[tagName];
+            if (!(eflags &amp; (html4.eflags['EMPTY'] | html4.eflags['FOLDABLE']))) {
+                var index;
+                if (eflags &amp; html4.eflags['OPTIONAL_ENDTAG']) {
+                    for (index = stack.length; --index &gt;= 0;) {
+                        var stackElOrigTag = stack[index].orig;
+                        if (stackElOrigTag === tagName) { break; }
+                        if (!(html4.ELEMENTS[stackElOrigTag] &amp;
+                            html4.eflags['OPTIONAL_ENDTAG'])) {
+                            // Don't pop non optional end tags looking for a match.
+                            return;
+                        }
+                    }
+                } else {
+                    for (index = stack.length; --index &gt;= 0;) {
+                        if (stack[index].orig === tagName) { break; }
+                    }
+                }
+                if (index &lt; 0) { return; }  // Not opened.
+                for (var i = stack ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.makeSaxParser" id="apidoc.element.sanitizer.makeSaxParser">
+        function <span class="apidocSignatureSpan">sanitizer.</span>makeSaxParser
+        <span class="apidocSignatureSpan">(handler)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeSaxParser(handler) {
+    // Accept quoted or unquoted keys (Closure compat)
+    var hcopy = {
+        cdata: handler.cdata || handler['cdata'],
+        comment: handler.comment || handler['comment'],
+        endDoc: handler.endDoc || handler['endDoc'],
+        endTag: handler.endTag || handler['endTag'],
+        pcdata: handler.pcdata || handler['pcdata'],
+        rcdata: handler.rcdata || handler['rcdata'],
+        startDoc: handler.startDoc || handler['startDoc'],
+        startTag: handler.startTag || handler['startTag']
+    };
+    return function(htmlText, param) {
+        return parse(htmlText, hcopy, param);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+See /test/test-sanitzer.js for full documentation.
+
+```
+sanitizer.escape('your dirty string'); // Escapes HTML special characters in attribute values as HTML entities
+```
+
+```
+var yourParser = sanitizer.<span class="apidocCodeKeywordSpan">makeSaxParser</span>(yourHandler); // Given a SAX-like event handler
+, produce a function that feeds those events and a parameter to the event handler.
+```
+
+```
+sanitizer.normalizeRCData('your dirty string'); // Escape entities in RCDATA that can be escaped without changing the
+meaning.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.makeTagPolicy" id="apidoc.element.sanitizer.makeTagPolicy">
+        function <span class="apidocSignatureSpan">sanitizer.</span>makeTagPolicy
+        <span class="apidocSignatureSpan">( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeTagPolicy( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    return function(tagName, attribs) {
+        if (!(html4.ELEMENTS[tagName] &amp; html4.eflags['UNSAFE'])) {
+            return {
+                'attribs': sanitizeAttribs(tagName, attribs,
+                    opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)
+            };
+        } else {
+            if (opt_logger) {
+                log(opt_logger, tagName, undefined, undefined, undefined);
+            }
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.normalizeRCData" id="apidoc.element.sanitizer.normalizeRCData">
+        function <span class="apidocSignatureSpan">sanitizer.</span>normalizeRCData
+        <span class="apidocSignatureSpan">(rcdata)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalizeRCData(rcdata) {
+	if(rcdata) {
+	    return rcdata
+            .replace(looseAmpRe, '&amp;amp;$1')
+            .replace(ltRe, '&amp;lt;')
+            .replace(gtRe, '&amp;gt;');
+	}
+	else {
+	    return rcdata;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+var yourParser = sanitizer.makeSaxParser(yourHandler); // Given a SAX-like event handler, produce a function that feeds those events
+ and a parameter to the event handler.
+```
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">normalizeRCData</span>('your dirty string'); // Escape entities in RCDATA
+ that can be escaped without changing the meaning.
+```
+
+```
+sanitizer.sanitize('your dirty string'); // Strips unsafe tags and attributes from html.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.sanitize" id="apidoc.element.sanitizer.sanitize">
+        function <span class="apidocSignatureSpan">sanitizer.</span>sanitize
+        <span class="apidocSignatureSpan">(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sanitize = function (inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    if (typeof(inputHtml) === "string") {
+        inputHtml = inputHtml.replace(/&lt;([a-zA-Z]+)([^&gt;]*)\/&gt;/g, '&lt;$1$2&gt;&lt;/$1&gt;');
+    }
+
+    if (inputHtml) {
+        return html.sanitize(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger);
+    }
+    else {
+        return inputHtml;
+    }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+sanitizer.normalizeRCData('your dirty string'); // Escape entities in RCDATA that can be escaped without changing the
+meaning.
+```
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">sanitize</span>('your dirty string'); // Strips unsafe tags and attributes
+ from html.
+```
+
+```
+exports.unescapeEntities('your string'); // The plain text of a chunk of HTML CDATA which possibly containing.
+```
+
+## Caveats
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.sanitizeAttribs" id="apidoc.element.sanitizer.sanitizeAttribs">
+        function <span class="apidocSignatureSpan">sanitizer.</span>sanitizeAttribs
+        <span class="apidocSignatureSpan">(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sanitizeAttribs(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    // TODO(felix8a): it's obnoxious that domado duplicates much of this
+    // TODO(felix8a): maybe consistently enforce constraints like target=
+    for (var i = 0; i &lt; attribs.length; i += 2) {
+        var attribName = attribs[i];
+        var value = attribs[i + 1];
+        var oldValue = value;
+        var atype = null, attribKey;
+        if ((attribKey = tagName + '::' + attribName,
+            html4.ATTRIBS.hasOwnProperty(attribKey)) ||
+            (attribKey = '*::' + attribName,
+                html4.ATTRIBS.hasOwnProperty(attribKey))) {
+            atype = html4.ATTRIBS[attribKey];
+        }
+        if (atype !== null) {
+            switch (atype) {
+                case html4.atype['NONE']: break;
+                case html4.atype['SCRIPT']:
+                    value = null;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['STYLE']:
+                    if ('undefined' === typeof parseCssDeclarations) {
+                        value = null;
+                        if (opt_logger) {
+                            log(opt_logger, tagName, attribName, oldValue, value);
+                        }
+                        break;
+                    }
+                    var sanitizedDeclarations = [];
+                    parseCssDeclarations(
+                        value,
+                        {
+                            'declaration': function (property, tokens) {
+                                var normProp = property.toLowerCase();
+                                sanitizeCssProperty(
+                                    normProp, tokens,
+                                    opt_naiveUriRewriter
+                                        ? function (url) {
+                                        return safeUri(
+                                            url, html4.ueffects.SAME_DOCUMENT,
+                                            html4.ltypes.SANDBOXED,
+                                            {
+                                                "TYPE": "CSS",
+                                                "CSS_PROP": normProp
+                                            }, opt_naiveUriRewriter);
+                                    }
+                                        : null);
+                                if (tokens.length) {
+                                    sanitizedDeclarations.push(
+                                        normProp + ': ' + tokens.join(' '));
+                                }
+                            }
+                        });
+                    value = sanitizedDeclarations.length &gt; 0 ?
+                        sanitizedDeclarations.join(' ; ') : null;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['ID']:
+                case html4.atype['IDREF']:
+                case html4.atype['IDREFS']:
+                case html4.atype['GLOBAL_NAME']:
+                case html4.atype['LOCAL_NAME']:
+                case html4.atype['CLASSES']:
+                    value = opt_nmTokenPolicy ? opt_nmTokenPolicy(value) : value;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['URI']:
+                    value = safeUri(value,
+                        getUriEffect(tagName, attribName),
+                        getLoaderType(tagName, attribName),
+                        {
+                            "TYPE": "MARKUP",
+                            "XML_ATTR": attribName,
+                            "XML_TAG": tagName
+                        }, opt_naiveUriRewriter);
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, o ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.sanitizeWithPolicy" id="apidoc.element.sanitizer.sanitizeWithPolicy">
+        function <span class="apidocSignatureSpan">sanitizer.</span>sanitizeWithPolicy
+        <span class="apidocSignatureSpan">(inputHtml, tagPolicy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sanitizeWithPolicy(inputHtml, tagPolicy) {
+    var outputArray = [];
+    makeHtmlSanitizer(tagPolicy)(inputHtml, outputArray);
+    return outputArray.join('');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.unescapeEntities" id="apidoc.element.sanitizer.unescapeEntities">
+        function <span class="apidocSignatureSpan">sanitizer.</span>unescapeEntities
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unescapeEntities(s) {
+	if(s) {
+	    return s.replace(ENTITY_RE_1, decodeOneEntity);
+	}
+	else {
+	    return s;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+sanitizer.sanitize('your dirty string'); // Strips unsafe tags and attributes from html.
+```
+
+```
+exports.<span class="apidocCodeKeywordSpan">unescapeEntities</span>('your string'); // The plain text of a chunk of HTML
+ CDATA which possibly containing.
+```
+
+## Caveats
+
+It's use this at your own risk really - Caja HTML Sanitizer was written by people far cleverer than me. I have just repackaged
+ it to solve a problem I had (sanitization on a Node server). It seems to work, and it passes all its tests in re-packaged form -
+however I don't fully understand its internals so cannot guarantee its security.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri" id="apidoc.element.sanitizer.uri">
+        function <span class="apidocSignatureSpan">sanitizer.</span>uri
+        <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function URI( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment) {
+    this.scheme_ = rawScheme;
+    this.credentials_ = rawCredentials;
+    this.domain_ = rawDomain;
+    this.port_ = port;
+    this.path_ = rawPath;
+    this.query_ = rawQuery;
+    this.fragment_ = rawFragment;
+<span class="apidocCodeCommentSpan">    /**
+     * @type {Array|null}
+     */
+</span>    this.paramCache_ = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sanitizer.Sanitizer" id="apidoc.module.sanitizer.Sanitizer">module sanitizer.Sanitizer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.escape" id="apidoc.element.sanitizer.Sanitizer.escape">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>escape
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrib(s) {
+	if(s) {
+	    return ('' + s).replace(ampRe, '&amp;amp;').replace(ltRe, '&amp;lt;')
+        .replace(gtRe, '&amp;gt;').replace(quotRe, '&amp;#34;');
+	}
+	else {
+	    return s;
+	}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Use
+
+See /test/test-sanitzer.js for full documentation.
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">escape</span>('your dirty string'); // Escapes HTML special characters in
+ attribute values as HTML entities
+```
+
+```
+var yourParser = sanitizer.makeSaxParser(yourHandler); // Given a SAX-like event handler, produce a function that feeds those events
+ and a parameter to the event handler.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.escapeAttrib" id="apidoc.element.sanitizer.Sanitizer.escapeAttrib">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>escapeAttrib
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrib(s) {
+	if(s) {
+	    return ('' + s).replace(ampRe, '&amp;amp;').replace(ltRe, '&amp;lt;')
+        .replace(gtRe, '&amp;gt;').replace(quotRe, '&amp;#34;');
+	}
+	else {
+	    return s;
+	}
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.makeHtmlSanitizer" id="apidoc.element.sanitizer.Sanitizer.makeHtmlSanitizer">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeHtmlSanitizer
+        <span class="apidocSignatureSpan">(tagPolicy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeHtmlSanitizer(tagPolicy) {
+    var stack;
+    var ignoring;
+    var emit = function (text, out) {
+        if (!ignoring) { out.push(text); }
+    };
+    return makeSaxParser({
+        'startDoc': function(_) {
+            stack = [];
+            ignoring = false;
+        },
+        'startTag': function(tagNameOrig, attribs, out) {
+            if (ignoring) { return; }
+            if (!html4.ELEMENTS.hasOwnProperty(tagNameOrig)) { return; }
+            var eflagsOrig = html4.ELEMENTS[tagNameOrig];
+            if (eflagsOrig &amp; html4.eflags['FOLDABLE']) {
+                return;
+            }
+
+            var decision = tagPolicy(tagNameOrig, attribs);
+            if (!decision) {
+                ignoring = !(eflagsOrig &amp; html4.eflags['EMPTY']);
+                return;
+            } else if (typeof decision !== 'object') {
+                throw new Error('tagPolicy did not return object (old API?)');
+            }
+            if ('attribs' in decision) {
+                attribs = decision['attribs'];
+            } else {
+                throw new Error('tagPolicy gave no attribs');
+            }
+            var eflagsRep;
+            var tagNameRep;
+            if ('tagName' in decision) {
+                tagNameRep = decision['tagName'];
+                eflagsRep = html4.ELEMENTS[tagNameRep];
+            } else {
+                tagNameRep = tagNameOrig;
+                eflagsRep = eflagsOrig;
+            }
+            // TODO(mikesamuel): relying on tagPolicy not to insert unsafe
+            // attribute names.
+
+            // If this is an optional-end-tag element and either this element or its
+            // previous like sibling was rewritten, then insert a close tag to
+            // preserve structure.
+            if (eflagsOrig &amp; html4.eflags['OPTIONAL_ENDTAG']) {
+                var onStack = stack[stack.length - 1];
+                if (onStack &amp;&amp; onStack.orig === tagNameOrig &amp;&amp;
+                    (onStack.rep !== tagNameRep || tagNameOrig !== tagNameRep)) {
+                    out.push('&lt;\/', onStack.rep, '&gt;');
+                }
+            }
+
+            if (!(eflagsOrig &amp; html4.eflags['EMPTY'])) {
+                stack.push({orig: tagNameOrig, rep: tagNameRep});
+            }
+
+            out.push('&lt;', tagNameRep);
+            for (var i = 0, n = attribs.length; i &lt; n; i += 2) {
+                var attribName = attribs[i],
+                    value = attribs[i + 1];
+                if (value !== null &amp;&amp; value !== void 0) {
+                    out.push(' ', attribName, '="', escapeAttrib(value), '"');
+                }
+            }
+            out.push('&gt;');
+
+            if ((eflagsOrig &amp; html4.eflags['EMPTY'])
+                &amp;&amp; !(eflagsRep &amp; html4.eflags['EMPTY'])) {
+                // replacement is non-empty, synthesize end tag
+                out.push('&lt;\/', tagNameRep, '&gt;');
+            }
+        },
+        'endTag': function(tagName, out) {
+            if (ignoring) {
+                ignoring = false;
+                return;
+            }
+            if (!html4.ELEMENTS.hasOwnProperty(tagName)) { return; }
+            var eflags = html4.ELEMENTS[tagName];
+            if (!(eflags &amp; (html4.eflags['EMPTY'] | html4.eflags['FOLDABLE']))) {
+                var index;
+                if (eflags &amp; html4.eflags['OPTIONAL_ENDTAG']) {
+                    for (index = stack.length; --index &gt;= 0;) {
+                        var stackElOrigTag = stack[index].orig;
+                        if (stackElOrigTag === tagName) { break; }
+                        if (!(html4.ELEMENTS[stackElOrigTag] &amp;
+                            html4.eflags['OPTIONAL_ENDTAG'])) {
+                            // Don't pop non optional end tags looking for a match.
+                            return;
+                        }
+                    }
+                } else {
+                    for (index = stack.length; --index &gt;= 0;) {
+                        if (stack[index].orig === tagName) { break; }
+                    }
+                }
+                if (index &lt; 0) { return; }  // Not opened.
+                for (var i = stack ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.makeSaxParser" id="apidoc.element.sanitizer.Sanitizer.makeSaxParser">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeSaxParser
+        <span class="apidocSignatureSpan">(handler)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeSaxParser(handler) {
+    // Accept quoted or unquoted keys (Closure compat)
+    var hcopy = {
+        cdata: handler.cdata || handler['cdata'],
+        comment: handler.comment || handler['comment'],
+        endDoc: handler.endDoc || handler['endDoc'],
+        endTag: handler.endTag || handler['endTag'],
+        pcdata: handler.pcdata || handler['pcdata'],
+        rcdata: handler.rcdata || handler['rcdata'],
+        startDoc: handler.startDoc || handler['startDoc'],
+        startTag: handler.startTag || handler['startTag']
+    };
+    return function(htmlText, param) {
+        return parse(htmlText, hcopy, param);
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+See /test/test-sanitzer.js for full documentation.
+
+```
+sanitizer.escape('your dirty string'); // Escapes HTML special characters in attribute values as HTML entities
+```
+
+```
+var yourParser = sanitizer.<span class="apidocCodeKeywordSpan">makeSaxParser</span>(yourHandler); // Given a SAX-like event handler
+, produce a function that feeds those events and a parameter to the event handler.
+```
+
+```
+sanitizer.normalizeRCData('your dirty string'); // Escape entities in RCDATA that can be escaped without changing the
+meaning.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.makeTagPolicy" id="apidoc.element.sanitizer.Sanitizer.makeTagPolicy">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>makeTagPolicy
+        <span class="apidocSignatureSpan">( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function makeTagPolicy( opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    return function(tagName, attribs) {
+        if (!(html4.ELEMENTS[tagName] &amp; html4.eflags['UNSAFE'])) {
+            return {
+                'attribs': sanitizeAttribs(tagName, attribs,
+                    opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)
+            };
+        } else {
+            if (opt_logger) {
+                log(opt_logger, tagName, undefined, undefined, undefined);
+            }
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.normalizeRCData" id="apidoc.element.sanitizer.Sanitizer.normalizeRCData">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>normalizeRCData
+        <span class="apidocSignatureSpan">(rcdata)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function normalizeRCData(rcdata) {
+	if(rcdata) {
+	    return rcdata
+            .replace(looseAmpRe, '&amp;amp;$1')
+            .replace(ltRe, '&amp;lt;')
+            .replace(gtRe, '&amp;gt;');
+	}
+	else {
+	    return rcdata;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+var yourParser = sanitizer.makeSaxParser(yourHandler); // Given a SAX-like event handler, produce a function that feeds those events
+ and a parameter to the event handler.
+```
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">normalizeRCData</span>('your dirty string'); // Escape entities in RCDATA
+ that can be escaped without changing the meaning.
+```
+
+```
+sanitizer.sanitize('your dirty string'); // Strips unsafe tags and attributes from html.
+```
+
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.sanitize" id="apidoc.element.sanitizer.Sanitizer.sanitize">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitize
+        <span class="apidocSignatureSpan">(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sanitize = function (inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    if (typeof(inputHtml) === "string") {
+        inputHtml = inputHtml.replace(/&lt;([a-zA-Z]+)([^&gt;]*)\/&gt;/g, '&lt;$1$2&gt;&lt;/$1&gt;');
+    }
+
+    if (inputHtml) {
+        return html.sanitize(inputHtml, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger);
+    }
+    else {
+        return inputHtml;
+    }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+sanitizer.normalizeRCData('your dirty string'); // Escape entities in RCDATA that can be escaped without changing the
+meaning.
+```
+
+```
+sanitizer.<span class="apidocCodeKeywordSpan">sanitize</span>('your dirty string'); // Strips unsafe tags and attributes
+ from html.
+```
+
+```
+exports.unescapeEntities('your string'); // The plain text of a chunk of HTML CDATA which possibly containing.
+```
+
+## Caveats
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.sanitizeAttribs" id="apidoc.element.sanitizer.Sanitizer.sanitizeAttribs">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitizeAttribs
+        <span class="apidocSignatureSpan">(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sanitizeAttribs(tagName, attribs, opt_naiveUriRewriter, opt_nmTokenPolicy, opt_logger) {
+    // TODO(felix8a): it's obnoxious that domado duplicates much of this
+    // TODO(felix8a): maybe consistently enforce constraints like target=
+    for (var i = 0; i &lt; attribs.length; i += 2) {
+        var attribName = attribs[i];
+        var value = attribs[i + 1];
+        var oldValue = value;
+        var atype = null, attribKey;
+        if ((attribKey = tagName + '::' + attribName,
+            html4.ATTRIBS.hasOwnProperty(attribKey)) ||
+            (attribKey = '*::' + attribName,
+                html4.ATTRIBS.hasOwnProperty(attribKey))) {
+            atype = html4.ATTRIBS[attribKey];
+        }
+        if (atype !== null) {
+            switch (atype) {
+                case html4.atype['NONE']: break;
+                case html4.atype['SCRIPT']:
+                    value = null;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['STYLE']:
+                    if ('undefined' === typeof parseCssDeclarations) {
+                        value = null;
+                        if (opt_logger) {
+                            log(opt_logger, tagName, attribName, oldValue, value);
+                        }
+                        break;
+                    }
+                    var sanitizedDeclarations = [];
+                    parseCssDeclarations(
+                        value,
+                        {
+                            'declaration': function (property, tokens) {
+                                var normProp = property.toLowerCase();
+                                sanitizeCssProperty(
+                                    normProp, tokens,
+                                    opt_naiveUriRewriter
+                                        ? function (url) {
+                                        return safeUri(
+                                            url, html4.ueffects.SAME_DOCUMENT,
+                                            html4.ltypes.SANDBOXED,
+                                            {
+                                                "TYPE": "CSS",
+                                                "CSS_PROP": normProp
+                                            }, opt_naiveUriRewriter);
+                                    }
+                                        : null);
+                                if (tokens.length) {
+                                    sanitizedDeclarations.push(
+                                        normProp + ': ' + tokens.join(' '));
+                                }
+                            }
+                        });
+                    value = sanitizedDeclarations.length &gt; 0 ?
+                        sanitizedDeclarations.join(' ; ') : null;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['ID']:
+                case html4.atype['IDREF']:
+                case html4.atype['IDREFS']:
+                case html4.atype['GLOBAL_NAME']:
+                case html4.atype['LOCAL_NAME']:
+                case html4.atype['CLASSES']:
+                    value = opt_nmTokenPolicy ? opt_nmTokenPolicy(value) : value;
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, oldValue, value);
+                    }
+                    break;
+                case html4.atype['URI']:
+                    value = safeUri(value,
+                        getUriEffect(tagName, attribName),
+                        getLoaderType(tagName, attribName),
+                        {
+                            "TYPE": "MARKUP",
+                            "XML_ATTR": attribName,
+                            "XML_TAG": tagName
+                        }, opt_naiveUriRewriter);
+                    if (opt_logger) {
+                        log(opt_logger, tagName, attribName, o ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.sanitizeWithPolicy" id="apidoc.element.sanitizer.Sanitizer.sanitizeWithPolicy">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>sanitizeWithPolicy
+        <span class="apidocSignatureSpan">(inputHtml, tagPolicy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function sanitizeWithPolicy(inputHtml, tagPolicy) {
+    var outputArray = [];
+    makeHtmlSanitizer(tagPolicy)(inputHtml, outputArray);
+    return outputArray.join('');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.Sanitizer.unescapeEntities" id="apidoc.element.sanitizer.Sanitizer.unescapeEntities">
+        function <span class="apidocSignatureSpan">sanitizer.Sanitizer.</span>unescapeEntities
+        <span class="apidocSignatureSpan">(s)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unescapeEntities(s) {
+	if(s) {
+	    return s.replace(ENTITY_RE_1, decodeOneEntity);
+	}
+	else {
+	    return s;
+	}
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+```
+sanitizer.sanitize('your dirty string'); // Strips unsafe tags and attributes from html.
+```
+
+```
+exports.<span class="apidocCodeKeywordSpan">unescapeEntities</span>('your string'); // The plain text of a chunk of HTML
+ CDATA which possibly containing.
+```
+
+## Caveats
+
+It's use this at your own risk really - Caja HTML Sanitizer was written by people far cleverer than me. I have just repackaged
+ it to solve a problem I had (sanitization on a Node server). It seems to work, and it passes all its tests in re-packaged form -
+however I don't fully understand its internals so cannot guarantee its security.
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sanitizer.uri" id="apidoc.module.sanitizer.uri">module sanitizer.uri</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.uri" id="apidoc.element.sanitizer.uri.uri">
+        function <span class="apidocSignatureSpan">sanitizer.</span>uri
+        <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function URI( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment) {
+    this.scheme_ = rawScheme;
+    this.credentials_ = rawCredentials;
+    this.domain_ = rawDomain;
+    this.port_ = port;
+    this.path_ = rawPath;
+    this.query_ = rawQuery;
+    this.fragment_ = rawFragment;
+<span class="apidocCodeCommentSpan">    /**
+     * @type {Array|null}
+     */
+</span>    this.paramCache_ = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.URI" id="apidoc.element.sanitizer.uri.URI">
+        function <span class="apidocSignatureSpan">sanitizer.uri.</span>URI
+        <span class="apidocSignatureSpan">( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function URI( rawScheme, rawCredentials, rawDomain, port, rawPath, rawQuery, rawFragment) {
+    this.scheme_ = rawScheme;
+    this.credentials_ = rawCredentials;
+    this.domain_ = rawDomain;
+    this.port_ = port;
+    this.path_ = rawPath;
+    this.query_ = rawQuery;
+    this.fragment_ = rawFragment;
+<span class="apidocCodeCommentSpan">    /**
+     * @type {Array|null}
+     */
+</span>    this.paramCache_ = null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.collapse_dots" id="apidoc.element.sanitizer.uri.collapse_dots">
+        function <span class="apidocSignatureSpan">sanitizer.uri.</span>collapse_dots
+        <span class="apidocSignatureSpan">(path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function collapse_dots(path) {
+    if (path === null) { return null; }
+    var p = normPath(path);
+    // Only /../ left to flatten
+    var r = PARENT_DIRECTORY_HANDLER_RE;
+    // We replace with $1 which matches a / before the .. because this
+    // guarantees that:
+    // (1) we have at most 1 / between the adjacent place,
+    // (2) always have a slash if there is a preceding path section, and
+    // (3) we never turn a relative path into an absolute path.
+    for (var q; (q = p.replace(r, '$1')) != p; p = q) {};
+    return p;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.create" id="apidoc.element.sanitizer.uri.create">
+        function <span class="apidocSignatureSpan">sanitizer.uri.</span>create
+        <span class="apidocSignatureSpan">(scheme, credentials, domain, port, path, query, fragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function create(scheme, credentials, domain, port, path, query, fragment) {
+    var uri = new URI(
+        encodeIfExists2(scheme, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_),
+        encodeIfExists2(
+            credentials, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_),
+        encodeIfExists(domain),
+        port &gt; 0 ? port.toString() : null,
+        encodeIfExists2(path, URI_DISALLOWED_IN_PATH_),
+        null,
+        encodeIfExists(fragment));
+    if (query) {
+        if ('string' === typeof query) {
+            uri.setRawQuery(query.replace(/[^?&amp;=0-9A-Za-z_\-~.%]/g, encodeOne));
+        } else {
+            uri.setAllParameters(query);
+        }
+    }
+    return uri;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.parse" id="apidoc.element.sanitizer.uri.parse">
+        function <span class="apidocSignatureSpan">sanitizer.uri.</span>parse
+        <span class="apidocSignatureSpan">(uriStr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(uriStr) {
+    var m = ('' + uriStr).match(URI_RE_);
+    if (!m) { return null; }
+    return new URI(
+        nullIfAbsent(m[1]),
+        nullIfAbsent(m[2]),
+        nullIfAbsent(m[3]),
+        nullIfAbsent(m[4]),
+        nullIfAbsent(m[5]),
+        nullIfAbsent(m[6]),
+        nullIfAbsent(m[7]));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+/**
+ * a mutable URI.
+ *
+ * This class contains setters and getters for the parts of the URI.
+ * The &lt;tt&gt;getXYZ&lt;/tt&gt;/&lt;tt&gt;setXYZ&lt;/tt&gt; methods return the decoded part -- so
+ * &lt;code&gt;uri.<span class="apidocCodeKeywordSpan">parse</span>('/foo%20bar').getPath()&lt;/code&gt; will
+return the decoded path,
+ * &lt;tt&gt;/foo bar&lt;/tt&gt;.
+ *
+ * &lt;p&gt;The raw versions of fields are available too.
+ * &lt;code&gt;uri.parse('/foo%20bar').getRawPath()&lt;/code&gt; will return the raw path,
+ * &lt;tt&gt;/foo%20bar&lt;/tt&gt;.  Use the raw setters with care, since
+ * &lt;code&gt;URI::toString&lt;/code&gt; is not guaranteed to return a valid url if a
+ * raw setter was used.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.resolve" id="apidoc.element.sanitizer.uri.resolve">
+        function <span class="apidocSignatureSpan">sanitizer.uri.</span>resolve
+        <span class="apidocSignatureSpan">(baseUri, relativeUri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function resolve(baseUri, relativeUri) {
+    // there are several kinds of relative urls:
+    // 1. //foo - replaces everything from the domain on.  foo is a domain name
+    // 2. foo - replaces the last part of the path, the whole query and fragment
+    // 3. /foo - replaces the the path, the query and fragment
+    // 4. ?foo - replace the query and fragment
+    // 5. #foo - replace the fragment only
+
+    var absoluteUri = baseUri.clone();
+    // we satisfy these conditions by looking for the first part of relativeUri
+    // that is not blank and applying defaults to the rest
+
+    var overridden = relativeUri.hasScheme();
+
+    if (overridden) {
+        absoluteUri.setRawScheme(relativeUri.getRawScheme());
+    } else {
+        overridden = relativeUri.hasCredentials();
+    }
+
+    if (overridden) {
+        absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+    } else {
+        overridden = relativeUri.hasDomain();
+    }
+
+    if (overridden) {
+        absoluteUri.setRawDomain(relativeUri.getRawDomain());
+    } else {
+        overridden = relativeUri.hasPort();
+    }
+
+    var rawPath = relativeUri.getRawPath();
+    var simplifiedPath = collapse_dots(rawPath);
+    if (overridden) {
+        absoluteUri.setPort(relativeUri.getPort());
+        simplifiedPath = simplifiedPath
+            &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+    } else {
+        overridden = !!rawPath;
+        if (overridden) {
+            // resolve path properly
+            if (simplifiedPath.charCodeAt(0) !== 0x2f /* / */) {  // path is relative
+                var absRawPath = collapse_dots(absoluteUri.getRawPath() || '')
+                    .replace(EXTRA_PARENT_PATHS_RE, '');
+                var slash = absRawPath.lastIndexOf('/') + 1;
+                simplifiedPath = collapse_dots(
+                    (slash ? absRawPath.substring(0, slash) : '')
+                        + collapse_dots(rawPath))
+                    .replace(EXTRA_PARENT_PATHS_RE, '');
+            }
+        } else {
+            simplifiedPath = simplifiedPath
+                &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+            if (simplifiedPath !== rawPath) {
+                absoluteUri.setRawPath(simplifiedPath);
+            }
+        }
+    }
+
+    if (overridden) {
+        absoluteUri.setRawPath(simplifiedPath);
+    } else {
+        overridden = relativeUri.hasQuery();
+    }
+
+    if (overridden) {
+        absoluteUri.setRawQuery(relativeUri.getRawQuery());
+    } else {
+        overridden = relativeUri.hasFragment();
+    }
+
+    if (overridden) {
+        absoluteUri.setRawFragment(relativeUri.getRawFragment());
+    }
+
+    return absoluteUri;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sanitizer.uri.prototype" id="apidoc.module.sanitizer.uri.prototype">module sanitizer.uri.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.checkParameterCache_" id="apidoc.element.sanitizer.uri.prototype.checkParameterCache_">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>checkParameterCache_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkParameterCache_ = function () {
+    if (!this.paramCache_) {
+        var q = this.query_;
+        if (!q) {
+            this.paramCache_ = [];
+        } else {
+            var cgiParams = q.split(/[&amp;\?]/);
+            var out = [];
+            var k = -1;
+            for (var i = 0; i &lt; cgiParams.length; ++i) {
+                var m = cgiParams[i].match(/^([^=]*)(?:=(.*))?$/);
+                // From http://www.w3.org/Addressing/URL/4_URI_Recommentations.html
+                // Within the query string, the plus sign is reserved as shorthand
+                // notation for a space.
+                out[++k] = decodeURIComponent(m[1]).replace(/\+/g, ' ');
+                out[++k] = decodeURIComponent(m[2] || '').replace(/\+/g, ' ');
+            }
+            this.paramCache_ = out;
+        }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    URI.prototype.setParameterValues = function (key, values) {
+// be nice and avoid subtle bugs where [] operator on string performs charAt
+// on some browsers and crashes on IE
+if (typeof values === 'string') {
+    values = [ values ];
+}
+
+this.<span class="apidocCodeKeywordSpan">checkParameterCache_</span>();
+var newValueIndex = 0;
+var pc = this.paramCache_;
+var params = [];
+for (var i = 0, k = 0; i &lt; pc.length; i += 2) {
+    if (key === pc[i]) {
+        if (newValueIndex &lt; values.length) {
+            params.push(key, values[newValueIndex++]);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.clone" id="apidoc.element.sanitizer.uri.prototype.clone">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>clone
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clone = function () {
+    return new URI(this.scheme_, this.credentials_, this.domain_, this.port_,
+        this.path_, this.query_, this.fragment_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// there are several kinds of relative urls:
+// 1. //foo - replaces everything from the domain on.  foo is a domain name
+// 2. foo - replaces the last part of the path, the whole query and fragment
+// 3. /foo - replaces the the path, the query and fragment
+// 4. ?foo - replace the query and fragment
+// 5. #foo - replace the fragment only
+
+var absoluteUri = baseUri.<span class="apidocCodeKeywordSpan">clone</span>();
+// we satisfy these conditions by looking for the first part of relativeUri
+// that is not blank and applying defaults to the rest
+
+var overridden = relativeUri.hasScheme();
+
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.getRawScheme());
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getAllParameters" id="apidoc.element.sanitizer.uri.prototype.getAllParameters">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getAllParameters
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAllParameters = function () {
+    this.checkParameterCache_();
+    return this.paramCache_.slice(0, this.paramCache_.length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getCredentials" id="apidoc.element.sanitizer.uri.prototype.getCredentials">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getCredentials
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getCredentials = function () {
+    return this.credentials_ &amp;&amp; decodeURIComponent(this.credentials_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getDomain" id="apidoc.element.sanitizer.uri.prototype.getDomain">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getDomain
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getDomain = function () {
+    return this.domain_ &amp;&amp; decodeURIComponent(this.domain_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getFragment" id="apidoc.element.sanitizer.uri.prototype.getFragment">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getFragment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getFragment = function () {
+    return this.fragment_ &amp;&amp; decodeURIComponent(this.fragment_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getParameterMap" id="apidoc.element.sanitizer.uri.prototype.getParameterMap">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterMap
+        <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getParameterMap = function (paramNameUnescaped) {
+    this.checkParameterCache_();
+    var paramMap = {};
+    for (var i = 0; i &lt; this.paramCache_.length; i += 2) {
+        var key = this.paramCache_[i++],
+            value = this.paramCache_[i++];
+        if (!(key in paramMap)) {
+            paramMap[key] = [value];
+        } else {
+            paramMap[key].push(value);
+        }
+    }
+    return paramMap;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getParameterValue" id="apidoc.element.sanitizer.uri.prototype.getParameterValue">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterValue
+        <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getParameterValue = function (paramNameUnescaped) {
+    this.checkParameterCache_();
+    for (var i = 0; i &lt; this.paramCache_.length; i += 2) {
+        if (paramNameUnescaped === this.paramCache_[i]) {
+            return this.paramCache_[i + 1];
+        }
+    }
+    return null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getParameterValues" id="apidoc.element.sanitizer.uri.prototype.getParameterValues">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getParameterValues
+        <span class="apidocSignatureSpan">(paramNameUnescaped)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getParameterValues = function (paramNameUnescaped) {
+    this.checkParameterCache_();
+    var values = [];
+    for (var i = 0; i &lt; this.paramCache_.length; i += 2) {
+        if (paramNameUnescaped === this.paramCache_[i]) {
+            values.push(this.paramCache_[i + 1]);
+        }
+    }
+    return values;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getPath" id="apidoc.element.sanitizer.uri.prototype.getPath">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getPath
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getPath = function () {
+    return this.path_ &amp;&amp; decodeURIComponent(this.path_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+/**
+ * a mutable URI.
+ *
+ * This class contains setters and getters for the parts of the URI.
+ * The &lt;tt&gt;getXYZ&lt;/tt&gt;/&lt;tt&gt;setXYZ&lt;/tt&gt; methods return the decoded part -- so
+ * &lt;code&gt;uri.parse('/foo%20bar').<span class="apidocCodeKeywordSpan">getPath</span>()&lt;/code&gt; will
+return the decoded path,
+ * &lt;tt&gt;/foo bar&lt;/tt&gt;.
+ *
+ * &lt;p&gt;The raw versions of fields are available too.
+ * &lt;code&gt;uri.parse('/foo%20bar').getRawPath()&lt;/code&gt; will return the raw path,
+ * &lt;tt&gt;/foo%20bar&lt;/tt&gt;.  Use the raw setters with care, since
+ * &lt;code&gt;URI::toString&lt;/code&gt; is not guaranteed to return a valid url if a
+ * raw setter was used.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getPort" id="apidoc.element.sanitizer.uri.prototype.getPort">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getPort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getPort = function () {
+    return this.port_ &amp;&amp; decodeURIComponent(this.port_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    overridden = relativeUri.hasPort();
+}
+
+var rawPath = relativeUri.getRawPath();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+    absoluteUri.setPort(relativeUri.<span class="apidocCodeKeywordSpan">getPort</span>());
+    simplifiedPath = simplifiedPath
+        &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+} else {
+    overridden = !!rawPath;
+    if (overridden) {
+        // resolve path properly
+        if (simplifiedPath.charCodeAt(0) !== 0x2f /* / */) {  // path is relative
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getQuery" id="apidoc.element.sanitizer.uri.prototype.getQuery">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getQuery
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getQuery = function () {
+    // From http://www.w3.org/Addressing/URL/4_URI_Recommentations.html
+    // Within the query string, the plus sign is reserved as shorthand notation
+    // for a space.
+    return this.query_ &amp;&amp; decodeURIComponent(this.query_).replace(/\+/g, ' ');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return null !== this.query_;
+};
+
+/**
+ * sets the query given a list of strings of the form
+ * [ key0, value0, key1, value1, ... ].
+ *
+ * &lt;p&gt;&lt;code&gt;uri.setAllParameters(['a', 'b', 'c', 'd']).<span class="
+apidocCodeKeywordSpan">getQuery</span>()&lt;/code&gt;
+ * will yield &lt;code&gt;'a=b&amp;c=d'&lt;/code&gt;.
+ */
+URI.prototype.setAllParameters = function (params) {
+    if (typeof params === 'object') {
+        if (!(params instanceof Array)
+            &amp;&amp; (params instanceof Object
+            || Object.prototype.toString.call(params) !== '[object Array]')) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawCredentials" id="apidoc.element.sanitizer.uri.prototype.getRawCredentials">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawCredentials
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawCredentials = function () {
+    return this.credentials_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.getRawScheme());
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.<span class="apidocCodeKeywordSpan">getRawCredentials</span>());
+} else {
+    overridden = relativeUri.hasDomain();
+}
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.getRawDomain());
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawDomain" id="apidoc.element.sanitizer.uri.prototype.getRawDomain">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawDomain
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawDomain = function () {
+    return this.domain_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+    overridden = relativeUri.hasDomain();
+}
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.<span class="apidocCodeKeywordSpan">getRawDomain</span>());
+} else {
+    overridden = relativeUri.hasPort();
+}
+
+var rawPath = relativeUri.getRawPath();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawFragment" id="apidoc.element.sanitizer.uri.prototype.getRawFragment">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawFragment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawFragment = function () {
+    return this.fragment_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (overridden) {
+        absoluteUri.setRawQuery(relativeUri.getRawQuery());
+    } else {
+        overridden = relativeUri.hasFragment();
+    }
+
+    if (overridden) {
+        absoluteUri.setRawFragment(relativeUri.<span class="apidocCodeKeywordSpan">getRawFragment</span>());
+    }
+
+    return absoluteUri;
+}
+
+/**
+ * a mutable URI.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawPath" id="apidoc.element.sanitizer.uri.prototype.getRawPath">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawPath
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawPath = function () {
+    return this.path_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.getRawDomain());
+} else {
+    overridden = relativeUri.hasPort();
+}
+
+var rawPath = relativeUri.<span class="apidocCodeKeywordSpan">getRawPath</span>();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+    absoluteUri.setPort(relativeUri.getPort());
+    simplifiedPath = simplifiedPath
+        &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+} else {
+    overridden = !!rawPath;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawQuery" id="apidoc.element.sanitizer.uri.prototype.getRawQuery">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawQuery
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawQuery = function () {
+    return this.query_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (overridden) {
+    absoluteUri.setRawPath(simplifiedPath);
+} else {
+    overridden = relativeUri.hasQuery();
+}
+
+if (overridden) {
+    absoluteUri.setRawQuery(relativeUri.<span class="apidocCodeKeywordSpan">getRawQuery</span>());
+} else {
+    overridden = relativeUri.hasFragment();
+}
+
+if (overridden) {
+    absoluteUri.setRawFragment(relativeUri.getRawFragment());
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getRawScheme" id="apidoc.element.sanitizer.uri.prototype.getRawScheme">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getRawScheme
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRawScheme = function () {
+    return this.scheme_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var absoluteUri = baseUri.clone();
+// we satisfy these conditions by looking for the first part of relativeUri
+// that is not blank and applying defaults to the rest
+
+var overridden = relativeUri.hasScheme();
+
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.<span class="apidocCodeKeywordSpan">getRawScheme</span>());
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.getScheme" id="apidoc.element.sanitizer.uri.prototype.getScheme">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>getScheme
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getScheme = function () {
+    // HTML5 spec does not require the scheme to be lowercased but
+    // all common browsers except Safari lowercase the scheme.
+    return this.scheme_ &amp;&amp; decodeURIComponent(this.scheme_).toLowerCase();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasCredentials" id="apidoc.element.sanitizer.uri.prototype.hasCredentials">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasCredentials
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasCredentials = function () {
+    return null !== this.credentials_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// that is not blank and applying defaults to the rest
+
+var overridden = relativeUri.hasScheme();
+
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.getRawScheme());
+} else {
+    overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasCredentials</span>();
+}
+
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+    overridden = relativeUri.hasDomain();
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasDomain" id="apidoc.element.sanitizer.uri.prototype.hasDomain">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasDomain
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasDomain = function () {
+    return null !== this.domain_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+    overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasDomain</span>();
+}
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.getRawDomain());
+} else {
+    overridden = relativeUri.hasPort();
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasFragment" id="apidoc.element.sanitizer.uri.prototype.hasFragment">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasFragment
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasFragment = function () {
+    return null !== this.fragment_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    overridden = relativeUri.hasQuery();
+}
+
+if (overridden) {
+    absoluteUri.setRawQuery(relativeUri.getRawQuery());
+} else {
+    overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasFragment</span>();
+}
+
+if (overridden) {
+    absoluteUri.setRawFragment(relativeUri.getRawFragment());
+}
+
+return absoluteUri;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasPath" id="apidoc.element.sanitizer.uri.prototype.hasPath">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasPath
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasPath = function () {
+    return null !== this.path_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasPort" id="apidoc.element.sanitizer.uri.prototype.hasPort">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasPort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasPort = function () {
+    return null !== this.port_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    overridden = relativeUri.hasDomain();
+}
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.getRawDomain());
+} else {
+    overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasPort</span>();
+}
+
+var rawPath = relativeUri.getRawPath();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+    absoluteUri.setPort(relativeUri.getPort());
+    simplifiedPath = simplifiedPath
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasQuery" id="apidoc.element.sanitizer.uri.prototype.hasQuery">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasQuery
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasQuery = function () {
+    return null !== this.query_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        }
+    }
+}
+
+if (overridden) {
+    absoluteUri.setRawPath(simplifiedPath);
+} else {
+    overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasQuery</span>();
+}
+
+if (overridden) {
+    absoluteUri.setRawQuery(relativeUri.getRawQuery());
+} else {
+    overridden = relativeUri.hasFragment();
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.hasScheme" id="apidoc.element.sanitizer.uri.prototype.hasScheme">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>hasScheme
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasScheme = function () {
+    return null !== this.scheme_;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// 4. ?foo - replace the query and fragment
+// 5. #foo - replace the fragment only
+
+var absoluteUri = baseUri.clone();
+// we satisfy these conditions by looking for the first part of relativeUri
+// that is not blank and applying defaults to the rest
+
+var overridden = relativeUri.<span class="apidocCodeKeywordSpan">hasScheme</span>();
+
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.getRawScheme());
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.removeParameter" id="apidoc.element.sanitizer.uri.prototype.removeParameter">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>removeParameter
+        <span class="apidocSignatureSpan">(key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeParameter = function (key) {
+    return this.setParameterValues(key, []);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setAllParameters" id="apidoc.element.sanitizer.uri.prototype.setAllParameters">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setAllParameters
+        <span class="apidocSignatureSpan">(params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setAllParameters = function (params) {
+    if (typeof params === 'object') {
+        if (!(params instanceof Array)
+            &amp;&amp; (params instanceof Object
+            || Object.prototype.toString.call(params) !== '[object Array]')) {
+            var newParams = [];
+            var i = -1;
+            for (var k in params) {
+                var v = params[k];
+                if ('string' === typeof v) {
+                    newParams[++i] = k;
+                    newParams[++i] = v;
+                }
+            }
+            params = newParams;
+        }
+    }
+    this.paramCache_ = null;
+    var queryBuf = [];
+    var separator = '';
+    for (var j = 0; j &lt; params.length;) {
+        var k = params[j++];
+        var v = params[j++];
+        queryBuf.push(separator, encodeURIComponent(k.toString()));
+        separator = '&amp;';
+        if (v) {
+            queryBuf.push('=', encodeURIComponent(v.toString()));
+        }
+    }
+    this.query_ = queryBuf.join('');
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        encodeIfExists2(path, URI_DISALLOWED_IN_PATH_),
+        null,
+        encodeIfExists(fragment));
+    if (query) {
+        if ('string' === typeof query) {
+            uri.setRawQuery(query.replace(/[^?&amp;=0-9A-Za-z_\-~.%]/g, encodeOne));
+        } else {
+            uri.<span class="apidocCodeKeywordSpan">setAllParameters</span>(query);
+        }
+    }
+    return uri;
+}
+function encodeIfExists(unescapedPart) {
+    if ('string' == typeof unescapedPart) {
+        return encodeURIComponent(unescapedPart);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setCredentials" id="apidoc.element.sanitizer.uri.prototype.setCredentials">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setCredentials
+        <span class="apidocSignatureSpan">(newCredentials)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setCredentials = function (newCredentials) {
+    this.credentials_ = encodeIfExists2(
+        newCredentials, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_);
+
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setDomain" id="apidoc.element.sanitizer.uri.prototype.setDomain">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setDomain
+        <span class="apidocSignatureSpan">(newDomain)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setDomain = function (newDomain) {
+    return this.setRawDomain(newDomain &amp;&amp; encodeURIComponent(newDomain));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setFragment" id="apidoc.element.sanitizer.uri.prototype.setFragment">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setFragment
+        <span class="apidocSignatureSpan">(newFragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setFragment = function (newFragment) {
+    this.fragment_ = newFragment ? encodeURIComponent(newFragment) : null;
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* &lt;p&gt;The raw versions of fields are available too.
+* &lt;code&gt;uri.parse('/foo%20bar').getRawPath()&lt;/code&gt; will return the raw path,
+* &lt;tt&gt;/foo%20bar&lt;/tt&gt;.  Use the raw setters with care, since
+* &lt;code&gt;URI::toString&lt;/code&gt; is not guaranteed to return a valid url if a
+* raw setter was used.
+*
+* &lt;p&gt;All setters return &lt;tt&gt;this&lt;/tt&gt; and so may be chained, a la
+* &lt;code&gt;uri.parse('/foo').<span class="apidocCodeKeywordSpan">setFragment</span>('part').toString()&amp;#
+x3c;/code&gt;.
+*
+* &lt;p&gt;You should not use this constructor directly -- please prefer the factory
+* functions {@link uri.parse}, {@link uri.create}, {@link uri.resolve}
+* instead.&lt;/p&gt;
+*
+* &lt;p&gt;The parameters are all raw (assumed to be properly escaped) parts, and
+* any (but not all) may be null.  Undefined is not allowed.&lt;/p&gt;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setParameterValues" id="apidoc.element.sanitizer.uri.prototype.setParameterValues">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setParameterValues
+        <span class="apidocSignatureSpan">(key, values)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setParameterValues = function (key, values) {
+    // be nice and avoid subtle bugs where [] operator on string performs charAt
+    // on some browsers and crashes on IE
+    if (typeof values === 'string') {
+        values = [ values ];
+    }
+
+    this.checkParameterCache_();
+    var newValueIndex = 0;
+    var pc = this.paramCache_;
+    var params = [];
+    for (var i = 0, k = 0; i &lt; pc.length; i += 2) {
+        if (key === pc[i]) {
+            if (newValueIndex &lt; values.length) {
+                params.push(key, values[newValueIndex++]);
+            }
+        } else {
+            params.push(pc[i], pc[i + 1]);
+        }
+    }
+    while (newValueIndex &lt; values.length) {
+        params.push(key, values[newValueIndex++]);
+    }
+    this.setAllParameters(params);
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            this.paramCache_ = out;
+        }
+    }
+};
+/**
+ * sets the values of the named cgi parameters.
+ *
+ * &lt;p&gt;So, &lt;code&gt;uri.parse('foo?a=b&amp;c=d&amp;e=f').<span class="apidocCodeKeywordSpan">setParameterValues
+</span>('c', ['new'])
+ * &lt;/code&gt; yields &lt;tt&gt;foo?a=b&amp;c=new&amp;e=f&lt;/tt&gt;.&lt;/p&gt;
+ *
+ * @param key {string}
+ * @param values {Array.&lt;string&gt;} the new values.  If values is a single string
+ *   then it will be treated as the sole value.
+ */
+URI.prototype.setParameterValues = function (key, values) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setPath" id="apidoc.element.sanitizer.uri.prototype.setPath">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setPath
+        <span class="apidocSignatureSpan">(newPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setPath = function (newPath) {
+    return this.setRawPath(encodeIfExists2(newPath, URI_DISALLOWED_IN_PATH_));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setPort" id="apidoc.element.sanitizer.uri.prototype.setPort">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setPort
+        <span class="apidocSignatureSpan">(newPort)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setPort = function (newPort) {
+    if (newPort) {
+        newPort = Number(newPort);
+        if (newPort !== (newPort &amp; 0xffff)) {
+            throw new Error('Bad port number ' + newPort);
+        }
+        this.port_ = '' + newPort;
+    } else {
+        this.port_ = null;
+    }
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+    overridden = relativeUri.hasPort();
+}
+
+var rawPath = relativeUri.getRawPath();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+    absoluteUri.<span class="apidocCodeKeywordSpan">setPort</span>(relativeUri.getPort());
+    simplifiedPath = simplifiedPath
+        &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+} else {
+    overridden = !!rawPath;
+    if (overridden) {
+        // resolve path properly
+        if (simplifiedPath.charCodeAt(0) !== 0x2f /* / */) {  // path is relative
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setQuery" id="apidoc.element.sanitizer.uri.prototype.setQuery">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setQuery
+        <span class="apidocSignatureSpan">(newQuery)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setQuery = function (newQuery) {
+    this.paramCache_ = null;
+    this.query_ = encodeIfExists(newQuery);
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawCredentials" id="apidoc.element.sanitizer.uri.prototype.setRawCredentials">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawCredentials
+        <span class="apidocSignatureSpan">(newCredentials)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawCredentials = function (newCredentials) {
+    this.credentials_ = newCredentials ? newCredentials : null;
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (overridden) {
+    absoluteUri.setRawScheme(relativeUri.getRawScheme());
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+
+if (overridden) {
+    absoluteUri.<span class="apidocCodeKeywordSpan">setRawCredentials</span>(relativeUri.getRawCredentials());
+} else {
+    overridden = relativeUri.hasDomain();
+}
+
+if (overridden) {
+    absoluteUri.setRawDomain(relativeUri.getRawDomain());
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawDomain" id="apidoc.element.sanitizer.uri.prototype.setRawDomain">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawDomain
+        <span class="apidocSignatureSpan">(newDomain)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawDomain = function (newDomain) {
+    this.domain_ = newDomain ? newDomain : null;
+    // Maintain the invariant that paths must start with a slash when the URI
+    // is not path-relative.
+    return this.setRawPath(this.path_);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+    overridden = relativeUri.hasDomain();
+}
+
+if (overridden) {
+    absoluteUri.<span class="apidocCodeKeywordSpan">setRawDomain</span>(relativeUri.getRawDomain());
+} else {
+    overridden = relativeUri.hasPort();
+}
+
+var rawPath = relativeUri.getRawPath();
+var simplifiedPath = collapse_dots(rawPath);
+if (overridden) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawFragment" id="apidoc.element.sanitizer.uri.prototype.setRawFragment">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawFragment
+        <span class="apidocSignatureSpan">(newFragment)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawFragment = function (newFragment) {
+    this.fragment_ = newFragment ? newFragment : null;
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (overridden) {
+        absoluteUri.setRawQuery(relativeUri.getRawQuery());
+    } else {
+        overridden = relativeUri.hasFragment();
+    }
+
+    if (overridden) {
+        absoluteUri.<span class="apidocCodeKeywordSpan">setRawFragment</span>(relativeUri.getRawFragment());
+    }
+
+    return absoluteUri;
+}
+
+/**
+ * a mutable URI.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawPath" id="apidoc.element.sanitizer.uri.prototype.setRawPath">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawPath
+        <span class="apidocSignatureSpan">(newPath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawPath = function (newPath) {
+    if (newPath) {
+        newPath = String(newPath);
+        this.path_ =
+            // Paths must start with '/' unless this is a path-relative URL.
+            (!this.domain_ || /^\//.test(newPath)) ? newPath : '/' + newPath;
+    } else {
+        this.path_ = null;
+    }
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                    + collapse_dots(rawPath))
+                .replace(EXTRA_PARENT_PATHS_RE, '');
+        }
+    } else {
+        simplifiedPath = simplifiedPath
+            &amp;&amp; simplifiedPath.replace(EXTRA_PARENT_PATHS_RE, '');
+        if (simplifiedPath !== rawPath) {
+            absoluteUri.<span class="apidocCodeKeywordSpan">setRawPath</span>(simplifiedPath);
+        }
+    }
+}
+
+if (overridden) {
+    absoluteUri.setRawPath(simplifiedPath);
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawQuery" id="apidoc.element.sanitizer.uri.prototype.setRawQuery">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawQuery
+        <span class="apidocSignatureSpan">(newQuery)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawQuery = function (newQuery) {
+    this.paramCache_ = null;
+    this.query_ = newQuery ? newQuery : null;
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        encodeIfExists(domain),
+        port &gt; 0 ? port.toString() : null,
+        encodeIfExists2(path, URI_DISALLOWED_IN_PATH_),
+        null,
+        encodeIfExists(fragment));
+    if (query) {
+        if ('string' === typeof query) {
+            uri.<span class="apidocCodeKeywordSpan">setRawQuery</span>(query.replace(/[^?&amp;=0-9A-Za-z_\-~.%]/g, encodeOne));
+        } else {
+            uri.setAllParameters(query);
+        }
+    }
+    return uri;
+}
+function encodeIfExists(unescapedPart) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setRawScheme" id="apidoc.element.sanitizer.uri.prototype.setRawScheme">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setRawScheme
+        <span class="apidocSignatureSpan">(newScheme)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setRawScheme = function (newScheme) {
+    this.scheme_ = newScheme ? newScheme : null;
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var absoluteUri = baseUri.clone();
+// we satisfy these conditions by looking for the first part of relativeUri
+// that is not blank and applying defaults to the rest
+
+var overridden = relativeUri.hasScheme();
+
+if (overridden) {
+    absoluteUri.<span class="apidocCodeKeywordSpan">setRawScheme</span>(relativeUri.getRawScheme());
+} else {
+    overridden = relativeUri.hasCredentials();
+}
+
+if (overridden) {
+    absoluteUri.setRawCredentials(relativeUri.getRawCredentials());
+} else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.setScheme" id="apidoc.element.sanitizer.uri.prototype.setScheme">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>setScheme
+        <span class="apidocSignatureSpan">(newScheme)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setScheme = function (newScheme) {
+    this.scheme_ = encodeIfExists2(
+        newScheme, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_);
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sanitizer.uri.prototype.toString" id="apidoc.element.sanitizer.uri.prototype.toString">
+        function <span class="apidocSignatureSpan">sanitizer.uri.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    var out = [];
+    if (null !== this.scheme_) { out.push(this.scheme_, ':'); }
+    if (null !== this.domain_) {
+        out.push('//');
+        if (null !== this.credentials_) { out.push(this.credentials_, '@'); }
+        out.push(this.domain_);
+        if (null !== this.port_) { out.push(':', this.port_.toString()); }
+    }
+    if (null !== this.path_) { out.push(this.path_); }
+    if (null !== this.query_) { out.push('?', this.query_); }
+    if (null !== this.fragment_) { out.push('#', this.fragment_); }
+    return out.join('');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ */
+function create(scheme, credentials, domain, port, path, query, fragment) {
+    var uri = new URI(
+        encodeIfExists2(scheme, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_),
+        encodeIfExists2(
+            credentials, URI_DISALLOWED_IN_SCHEME_OR_CREDENTIALS_),
+        encodeIfExists(domain),
+        port &gt; 0 ? port.<span class="apidocCodeKeywordSpan">toString</span>() : null,
+        encodeIfExists2(path, URI_DISALLOWED_IN_PATH_),
+        null,
+        encodeIfExists(fragment));
+    if (query) {
+        if ('string' === typeof query) {
+            uri.setRawQuery(query.replace(/[^?&amp;=0-9A-Za-z_\-~.%]/g, encodeOne));
+        } else {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
